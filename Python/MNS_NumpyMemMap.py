@@ -23,7 +23,7 @@ mmp = np.memmap(filename = 'E:\\RWD_nat\\memmp\\b.mmp', dtype='int16', mode='w+'
 
 for x in range(0,rxdim-1):
     for y in range(0,rydim-1):
-        mmp[y,x] = sum()
+        mmp[y,x,0] = sum(sum(ropenb1sub[(3*y):(3*y)+2,(3*x):(3*x)+2]));
 
 
 
