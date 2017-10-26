@@ -5,18 +5,25 @@ import tifffile as tf
 from collections import deque
 import gdal
 from random import randint;
+import math;
 
-os.chdir('E:/RWD_nat/tiffs/')
-rd8 = 'E:\\RWD_nat\\tiffs\\MAFDR\\fdr1.tif'
-gord8 = gdal.Open(rd8)
-gord81 = gord8.GetRasterBand(1)
-gord81sub = gord81.ReadAsArray(1,1,22982,28379)
+rname = 'G:\\WilliamPenn_Share\\EDS\\SUSQUEHANNA\\DATA\\USGS\\NLCD_HR\\IR.tif'
+ropen = gdal.Open(rname)
+
+rxdim = ropen.RasterXSize
+rydim = ropen.RasterYSize
+
+rxdimf = math.floor(rxdim/3)
+rydimf = math.floor(rydim/3)
+ropenb1 = ropen.GetRasterBand(1)
+ropenb1sub = ropenb1.ReadAsArray()
 
 ## Example to create a memory map
-d8 = np.memmap(filename = 'E:\\RWD_nat\\memmp\\d8.mmp', dtype='int64', mode='w+', shape=(gord81sub.shape[0]+4,gord81sub.shape[1]+4,1));
- 
+mmp = np.memmap(filename = 'E:\\RWD_nat\\memmp\\b.mmp', dtype='int16', mode='w+', shape=(rydimf,rxdimf,13));
 
-d8[2:gord81sub.shape[0]+2, 2:gord81sub.shape[1]+2, 0] = gord81sub 
+for x in range(0,rxdim-1):
+    for y in range(0,rydim-1):
+        mmp[y,x] = sum()
 
 
 
