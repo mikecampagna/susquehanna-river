@@ -43,9 +43,9 @@ SELECT nhd.gnis_name
 ,t2.*
 ,nhd.geom
 		
-from
+FROM
 (
-select	t1.comid
+SELECT	t1.comid
 ,	nhd.maflowv						as flow_cfs	
 
 	/*
